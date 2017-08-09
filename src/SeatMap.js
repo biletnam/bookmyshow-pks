@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class Form extends Component {
+class SeatMap extends Component {
   constructor(props) {
     super(props);
     this.state = {name: '', nos: ''};
@@ -33,4 +33,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default SeatMap;

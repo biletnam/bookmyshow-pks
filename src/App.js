@@ -3,17 +3,33 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {name: '', nos: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    if(event.target.id === 'name')
+      this.setState({name: event.target.value});
+    if(event.target.id === 'nos')
+      this.setState({nos: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('Values submitted: ' + this.state.name + this.state.nos);
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <input id="name" type="text" value={this.state.name} onChange={this.handleChange} />
+        <input id="nos" type="text" value={this.state.nos} onChange={this.handleChange} />
+        <input type="submit" value="Submit" />
+      </form>
     );
   }
 }
